@@ -1,10 +1,10 @@
-package com.pioneers.simpleuniversitysystem;
+package com.pioneers.universitysystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SimpleUniversitySystemApplicationTests {
+class UniversityAppTests {
 
     @Test
     void contextLoads() {

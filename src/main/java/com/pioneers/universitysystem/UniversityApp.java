@@ -1,13 +1,11 @@
-package com.pioneers.simpleuniversitysystem;
+package com.pioneers.universitysystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SimpleUniversitySystemApplication {
-
+public class UniversityApp {
     public static void main(String[] args) {
-        SpringApplication.run(SimpleUniversitySystemApplication.class, args);
+        SpringApplication.run(UniversityApp.class, args);
     }
-
 }

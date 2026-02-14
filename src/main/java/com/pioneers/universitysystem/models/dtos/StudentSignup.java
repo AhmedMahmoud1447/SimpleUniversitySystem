@@ -1,19 +1,13 @@
-package com.pioneers.simpleuniversitysystem.models.dtos;
+package com.pioneers.universitysystem.models.dtos;
 
-import java.util.Map;
 import java.util.Objects;
 
-public class StudentRequest {
-
+public class StudentSignup {
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
     private String password;
-
-    public boolean checkPassword(Map<String, StudentRequest> students,String email, String password) {
-        return (students.get(email).getPassword().equals(password));
-    }
 
     public String getFirstName() {
         return firstName;
@@ -57,8 +51,12 @@ public class StudentRequest {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof StudentRequest that)) return false;
-        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(password, that.password);
+        if (!(o instanceof StudentSignup that)) return false;
+        return Objects.equals(firstName, that.firstName)
+                && Objects.equals(lastName, that.lastName)
+                && Objects.equals(email, that.email)
+                && Objects.equals(phoneNumber, that.phoneNumber)
+                && Objects.equals(password, that.password);
     }
 
     @Override
