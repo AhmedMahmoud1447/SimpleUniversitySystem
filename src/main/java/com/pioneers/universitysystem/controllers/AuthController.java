@@ -3,6 +3,7 @@ package com.pioneers.universitysystem.controllers;
 import com.pioneers.universitysystem.models.dtos.StudentLogin;
 import com.pioneers.universitysystem.models.dtos.StudentSignup;
 import com.pioneers.universitysystem.models.entities.Student;
+import com.pioneers.universitysystem.utils.mappers.StudentMapper;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,9 @@ public class AuthController {
             return "Student already Registered!!";
         }
 
+
         final Student student = toStudent(studentSignup);
+        System.out.println("Successfully save student: " + student);
 
         students.put(student.getId(), student);
         return "Student registered successfully";
