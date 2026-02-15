@@ -8,7 +8,6 @@ A simple Spring Boot REST API for basic student registration and account operati
 - Maven Wrapper (`mvnw`, `mvnw.cmd`)
 
 ## Project Structure
-- `src/main/java/com/pioneers/simpleuniversitysystem/SimpleUniversitySystemApplication.java`: app entry point
 - `src/main/java/com/pioneers/simpleuniversitysystem/controllers/Main.java`: REST endpoints
 - `src/main/java/com/pioneers/simpleuniversitysystem/models/dtos/StudentRequest.java`: request DTO
 
