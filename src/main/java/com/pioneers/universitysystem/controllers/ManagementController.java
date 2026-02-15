@@ -12,8 +12,6 @@ import static com.pioneers.universitysystem.repositories.Database.students;
 @RequestMapping("management")
 public class ManagementController {
 
-
-
     @GetMapping("fetchAllStudents")
     public List<String> fetchAllStudents() {
         return students.values().stream().map(student -> student.getFullName() +" whose email is " +
