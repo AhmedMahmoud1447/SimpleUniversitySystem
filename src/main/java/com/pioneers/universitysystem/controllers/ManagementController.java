@@ -1,9 +1,12 @@
 package com.pioneers.universitysystem.controllers;
 
-import com.pioneers.universitysystem.models.dtos.StudentSignup;
 import com.pioneers.universitysystem.models.entities.Student;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static com.pioneers.universitysystem.repositories.Database.students;
 
 @RestController
 @RequestMapping("management")
@@ -11,9 +14,10 @@ public class ManagementController {
 
 
 
-    /*@GetMapping("fetchAllStudents")
-    public Map<String, StudentSignup> fetchAllStudents() {
-        return students;
+    @GetMapping("fetchAllStudents")
+    public List<String> fetchAllStudents() {
+        return students.values().stream().map(student -> student.getFullName() +" whose email is " +
+                student.getEmail()).toList();
     }
 
     @DeleteMapping("DeleteAllStudents")
@@ -23,30 +27,28 @@ public class ManagementController {
     }
 
     @DeleteMapping("DeleteStudent")
-    public ResponseEntity<String> deleteStudent(@RequestParam String email) {
-        if (students.containsKey(email)) {
-            students.remove(email);
-            return ResponseEntity.ok("Student with email " + email + " deleted successfully");
+    public ResponseEntity<String> deleteStudent(@RequestParam String id) {
+        if (students.containsKey(id)) {
+            students.remove(id);
+            return ResponseEntity.ok("Student with id " + id + " deleted successfully");
         } else {
-            return ResponseEntity.status(404).body("Student with email " + email + " not found");
+            return ResponseEntity.status(404).body("Student with id " + id + " not found");
         }
     }
 
     @GetMapping("FirstRegisteredStudent")
     public String findFirstRegisteredStudent() {
-        return students.values().stream().findFirst().map(student -> student.getFirstName()
-                        + " " + student.getLastName() + "whose email is " + student.getEmail())
-                .orElse("No students registered");
+        return students.values().stream().findFirst().map(student ->
+                        student.getFullName() + "whose id is " + student.getId())
+                         .orElse("No students registered");
     }
 
-    @PutMapping("UpdateStudentInformation")
-    public String updateStudentInformation(@RequestBody final StudentSignup studentSignup) {
-        final String email = studentSignup.getEmail();
-
-        if (!students.containsKey(email)) {
-            return "Student with email " + email + " not found";
+    @PutMapping("UpdateStudentInformation/{id}")
+    public String updateStudentInformation(@PathVariable String id , @RequestBody Student updatedStudent) {
+        if(!students.containsKey(id)) {
+            return "Student with id " + id + " not found";
         }
-        students.put(email, studentSignup);
+        students.put(id, updatedStudent);
         return "Student information updated successfully";
-    }*/
+    }
 }
